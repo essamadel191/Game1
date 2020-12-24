@@ -1,0 +1,90 @@
+import QtQuick 2.0
+import Felgo 3.0
+import "../common" as Common
+import QtMultimedia 5.12
+
+Item {
+
+    id: item
+    //header
+    Rectangle{
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: 10
+
+        width: 85
+        height: 40
+        color: "white"
+
+        radius: 5
+    Text {
+
+        anchors.fill:parent
+        anchors.margins: 5
+        id: header1
+        text: qsTr("حرف (ك)")
+        font.pixelSize: 20
+
+    }
+
+    }
+    //All playing canter
+    Rectangle{
+    id:sceenCenter1
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.top: parent.top
+    anchors.topMargin: 60
+    width: parent.width-20
+    height: parent.height - 120
+    radius: 20
+    color: "white"
+    Rectangle{
+    //color: "red"
+    width: 100
+    height: 100
+    anchors.top: parent.top
+    anchors.topMargin: 10
+    anchors.right: parent.right
+    anchors.rightMargin: 10
+
+    Image {
+        id: dog_img
+        anchors.fill: parent
+        source: "../../assets/img/dog.png"
+    }
+    }
+
+    Rectangle{
+    color: "#bfbfbf"
+    radius: 5
+    id:sound_img
+    width: 30
+    height: 30
+    anchors.bottom: parent.bottom
+    anchors.bottomMargin: 60
+    anchors.right: parent.right
+    anchors.rightMargin: 50
+    Image {
+        id: sound_img_source
+        anchors.fill: parent
+        source: "../../assets/img/sound_icon.png"
+        opacity: 0.8
+    }
+    }
+    MouseArea{
+        anchors.fill: parent
+        hoverEnabled: true
+
+        onPressed: sound_img.opacity = 0.5
+        onReleased: sound_img.opacity = 0.8
+
+    }
+
+
+    }
+
+
+
+
+
+}
