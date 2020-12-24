@@ -1,0 +1,282 @@
+import QtQuick 2.0
+import Felgo 3.0
+import "../common" as Common
+import QtMultimedia 5.12
+
+Item {
+
+    id: item
+    //header
+    Rectangle{
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: 10
+
+        width: 85
+        height: 40
+        color: "white"
+
+        radius: 5
+    Text {
+
+        anchors.fill:parent
+        anchors.margins: 5
+        id: header1
+        text: qsTr("حرف (ك)")
+        font.pixelSize: 20
+
+    }
+
+    }
+    //the letter spelling
+    Rectangle{
+        id:t
+        width: 30
+        height: 30
+        radius: 5
+        anchors.top: parent.top
+        anchors.topMargin: 15
+        anchors.right: parent.right
+        anchors.rightMargin: 150
+        color: "#cccccc"
+        Image {
+            id: sound_img_source2
+            anchors.fill: parent
+            source: "../../assets/img/sound_icon.png"
+            opacity: 0.8
+        }
+    SoundEffect{
+    id:letter_sound
+    source: "../../assets/sounds/Dmp3.wav"
+    }
+    MouseArea{
+        anchors.fill: parent
+        hoverEnabled: true
+
+        onPressed: t.opacity = 0.5
+        onReleased: t.opacity = 0.8
+
+        onClicked: letter_sound.play()
+
+    }
+
+    }
+    //All playing canter
+    Rectangle{
+    id:sceenCenter1
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.top: parent.top
+    anchors.topMargin: 60
+    width: parent.width-20
+    height: parent.height - 120
+    radius: 20
+    color: "white"
+
+        //Dog image
+        Rectangle{
+        //color: "red"
+        width: 100
+        height: 100
+        anchors.top: parent.top
+        anchors.topMargin: 10
+        anchors.right: parent.right
+        anchors.rightMargin: 10
+
+        Image {
+            id: dog_img
+            anchors.fill: parent
+            source: "../../assets/img/dog.png"
+        }
+        }
+
+        // Sound Icon
+        Rectangle{
+        color: "#bfbfbf"
+        radius: 5
+        id:sound_img
+        width: 30
+        height: 30
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 60
+        anchors.right: parent.right
+        anchors.rightMargin: 50
+        Image {
+            id: sound_img_source
+            anchors.fill: parent
+            source: "../../assets/img/sound_icon.png"
+            opacity: 0.8
+        }
+        }
+        SoundEffect{
+        id:sound
+        source: "../../assets/sounds/dog_sound2 (online-audio-converter.com).wav"
+        }
+        MouseArea{
+            anchors.fill: sound_img
+            hoverEnabled: true
+
+            onPressed: sound_img.opacity = 0.5
+            onReleased: sound_img.opacity = 0.8
+
+            onClicked: sound.play()
+
+        }
+        //all letters right answer
+        Rectangle{
+        id:all_letter
+        //color: "blue"
+        width: 180
+        height: 40
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 40
+        anchors.left: parent.left
+        anchors.leftMargin: 50
+
+        //letter1
+        Rectangle{
+        id:letter1
+        //color: "red"
+        radius: 5
+        width: 50
+        height: 30
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 5
+        anchors.left: parent.left
+        anchors.leftMargin: 5
+        border.color: "#cccccc"
+        border.width: 2
+
+        }
+        //letter2
+        Rectangle{
+        id:letter2
+        //color: "red"
+        radius: 5
+        width: 50
+        height: 30
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 5
+        anchors.left: parent.left
+        anchors.leftMargin: 65
+        border.color: "#cccccc"
+        border.width: 2
+
+
+        }
+        //letter3
+        Rectangle{
+        id:letter3
+        //color: "red"
+        radius: 5
+        width: 50
+        height: 30
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 5
+        anchors.left: parent.left
+        anchors.leftMargin: 125
+        border.color: "#cccccc"
+        border.width: 2
+
+
+        }
+        }
+        Rectangle{
+        id:first
+        width: 10
+        height: 10
+//        anchors.top: parent.top
+//        anchors.topMargin: 30
+//        anchors.left: parent.left
+//        anchors.leftMargin: 20
+        x:20
+        y:40
+
+        Text {
+            anchors.fill: first
+            id:first_item
+            font.pixelSize: 15
+            text: qsTr("ك")
+            z:6
+        }
+        MouseArea{
+        anchors.fill:first
+        hoverEnabled: true
+        onPressed: first.opacity=0.5
+        onReleased: first.opacity=1
+        onClicked: {
+            letter_anime_x.start()
+            letter_anime_y.start()
+        }
+        }
+
+        NumberAnimation on x{
+        id:letter_anime_x
+        target: first
+        properties: "x"
+        to:180
+        duration: 1000
+        running: false
+        }
+        NumberAnimation on y{
+        id:letter_anime_y
+        target: first
+        properties: "y"
+        to:130
+        duration: 1000
+        running: false
+        }
+        }
+
+        Rectangle{
+        id:second
+        width: 10
+        height: 10
+//        anchors.top: parent.top
+//        anchors.topMargin: 30
+//        anchors.left: parent.left
+//        anchors.leftMargin: 20
+        x:40
+        y:40
+
+        Text {
+            anchors.fill: second
+            id:second_item
+            font.pixelSize: 15
+            text: qsTr("ل")
+            z:6
+        }
+        MouseArea{
+        anchors.fill:second
+        hoverEnabled: true
+        onPressed: second.opacity=0.5
+        onReleased: second.opacity=1
+        onClicked: {
+            letter2_anime_x.start()
+            letter2_anime_y.start()
+        }
+        }
+
+        NumberAnimation on x{
+        id:letter2_anime_x
+        target: second
+        properties: "x"
+        to:180
+        duration: 1000
+        running: false
+        }
+        NumberAnimation on y{
+        id:letter2_anime_y
+        target: second
+        properties: "y"
+        to:130
+        duration: 1000
+        running: false
+        }
+        }
+
+
+        }
+
+
+
+}
